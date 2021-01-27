@@ -1,0 +1,104 @@
+﻿@model TicketingSystem.Models.ticket
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.customers.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.customers.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.staff.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.staff.username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ticket_categories.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ticket_categories.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ticket_priorities.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ticket_priorities.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ticket_statuses.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ticket_statuses.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ticket_content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ticket_content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.completed_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.completed_at)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

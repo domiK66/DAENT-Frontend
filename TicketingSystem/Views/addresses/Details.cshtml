@@ -1,0 +1,50 @@
+﻿@model TicketingSystem.Models.addresses
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>addresses</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.countries.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.countries.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.streetname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.streetname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postalcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postalcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cityname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cityname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

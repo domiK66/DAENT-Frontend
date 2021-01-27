@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Ticketing System</h1>
+    <p>Project Group: DAENT_04</p>
+    <p>Members: Dominik, Lukas, Mensur</p>
+    <p class="lead">This ticketing system offers a complete and easy way to create and organize issues that customers of a company have, where they need support or receive any services. Customers can create user accounts and issue tickets, ordered by categories, to company employees, so called agents. The agents get open tickets automatically assigned due to their tickets in queue and the categories they are working in. The agents can also change the status and the priority of their tickets to personalize and prioritize their to-do list. It is also possible to change the agents of a ticket to another in case of absence and manual changes. This will also be done automatically if an agent is absent for more than a certain amount of time.</p>
+    <p><a class="btn btn-primary btn-lg" @Html.ActionLink("Tickets >>", "Index", "tickets")</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>LINQ INNER JOIN</h2>
+        <p>Practice Lab 2</p>
+        <p>
+            Usage of LINQ to display a view with an INNER JOIN between two database tables. An address contains the ISO code of a country, that gets used to lookup the name of the country.
+        </p>
+        <p><a class="btn btn-default" @Html.ActionLink("Addresses >>", "Index", "addresses")</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>
+            Stored Procedure & validation checks
+        </h2>
+        <p>Practice Lab 3 & 4</p>
+        <p>
+            Call of stored procedure with at least one Parameter, by a button click. A validation of inputs should be done with JavaScript with a least one value that is verified in the userinterface.
+        </p>
+        <p><a class="btn btn-default" @Html.ActionLink("createTicket >>", "Create", "tickets")</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Searching Tables </h2>
+        <p>Practice Lab 5</p>
+        <p>To retrive the information of a table, there is a function to search for given words. (searching should be able in every row of a table)</p>
+        <p><a class="btn btn-default" @Html.ActionLink("Search >>", "SucheEingabe", "tickets")</a></p>
+    </div>
+</div>

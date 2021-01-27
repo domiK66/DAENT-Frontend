@@ -1,0 +1,91 @@
+﻿@model IEnumerable<TicketingSystem.Models.ticket>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New Ticket", "Create")
+</p>
+<p>
+    @Html.ActionLink("Search Tickets", "SucheEingabe")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            customer
+        </th>
+        <th>
+            agent
+        </th>
+        <th>
+            category
+        </th>
+        <th>
+            priority
+        </th>
+        <th>
+            status
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.subject)
+        </th>
+        <th>
+            content
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.created_at)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.updated_at)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.completed_at)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.customers.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.staff.username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ticket_categories.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ticket_priorities.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ticket_statuses.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ticket_content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.created_at)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.updated_at)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.completed_at)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>
