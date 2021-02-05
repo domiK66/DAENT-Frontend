@@ -18,7 +18,7 @@ namespace TicketingSystem.Controllers
         public ActionResult Index()
 
         {
-            // GET: addresses
+            // LINQ join
             var addresses = (from a in db.addresses
 
                              join c in db.countries on a.country equals c.iso
@@ -42,11 +42,11 @@ namespace TicketingSystem.Controllers
                       })).ToList();
 
 
-        // neue leere Liste
+            // neue leere Liste
 
-        List<addresses> list = new List<addresses>();
+            List<addresses> list = new List<addresses>();
 
-        addresses tempObj;
+            addresses tempObj;
 
 
             // eine Schleife, damit jeder Datensatz in eine neue Liste geschrieben wird
@@ -59,7 +59,7 @@ namespace TicketingSystem.Controllers
 
                 tempObj = new addresses();
 
-        // Werte setzen
+                // Werte setzen
 
                 tempObj.id = a.id;
 
@@ -99,7 +99,7 @@ public ActionResult Details(int? id)
         // GET: addresses/Create
         public ActionResult Create()
         {
-        
+            ViewBag.country = new SelectList(db.countries, "iso", "name");
             return View();
         }
 

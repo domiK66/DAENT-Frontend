@@ -41,7 +41,7 @@ namespace TicketingSystem.Controllers
         // GET: tickets/Create
         public ActionResult Create()
         {
-            ViewBag.customer_number = new SelectList(db.customers, "id", "username");
+            ViewBag.customer = new SelectList(db.customers, "id", "username");
             ViewBag.agent = new SelectList(db.staff, "id", "username");
             ViewBag.category = new SelectList(db.ticket_categories, "id", "name");
             ViewBag.priority = new SelectList(db.ticket_priorities, "id", "name");
@@ -50,8 +50,7 @@ namespace TicketingSystem.Controllers
         }
 
         // POST: tickets/Create
-        // Aktivieren Sie zum Schutz vor Angriffen durch Overposting die jeweiligen Eigenschaften, mit denen eine Bindung erfolgen soll. 
-        // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Aufruf der stored Procedure
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "subject,content,customer,category")] CreateTicket createticket)
@@ -68,8 +67,6 @@ namespace TicketingSystem.Controllers
 
                 SqlParameter caParam = new SqlParameter("@category", createticket.category);
 
-
-
                 //SqlParameter bestatus = new SqlParameter("@status", benutzeranlage.status);
                 //bestatus.Direction = ParameterDirection.Output;
                 object[] parameters = { suParam, coParam, cuParam, caParam };
@@ -78,10 +75,12 @@ namespace TicketingSystem.Controllers
 
                 return RedirectToAction("Index");
             }
-           
+            ViewBag.category = new SelectList(db.ticket_categories, "id", "name");
+            ViewBag.customer = new SelectList(db.customers, "id", "username");
             return View(createticket);
         }
 
+        // Such funktion
         public ActionResult SucheEingabe()
         {
             return View();
@@ -97,10 +96,7 @@ namespace TicketingSystem.Controllers
             {
                 return HttpNotFound();
             }
-            IQueryable<ticket> searchResult = db.ticket.Where(x => x.subject.ToLower().Contains(suche.suchbegriff) 
-                                                                || x.ticket_content.ToLower().Contains(suche.suchbegriff)
-                                                                                                                );
-
+            IQueryable<ticket> searchResult = db.ticket.Where(x => x.subject.ToLower().Contains(suche.suchbegriff) || x.ticket_content.ToLower().Contains(suche.suchbegriff));
 
             return View(searchResult.ToList());
 

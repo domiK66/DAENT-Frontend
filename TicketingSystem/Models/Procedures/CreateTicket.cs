@@ -6,6 +6,7 @@ using System.Web;
 
 namespace TicketingSystem.Models
 {
+    // klasse für den aufruf der prozedur
     public class CreateTicket
     {
         [Key]
